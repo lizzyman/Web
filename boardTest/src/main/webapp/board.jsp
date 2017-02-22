@@ -27,5 +27,6 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<a href="/boardTest/write">글쓰기</a>
 </body>
 </html>

@@ -19,4 +19,24 @@
     <servlet-name>BoardServlet</servlet-name>
     <url-pattern>/board</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>WriteServlet</display-name>
+    <servlet-name>WriteServlet</servlet-name>
+    <servlet-class>com.ktds.lizzy.board.web.WriteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WriteServlet</servlet-name>
+    <url-pattern>/write</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoWriteActionServlet</display-name>
+    <servlet-name>DoWriteActionServlet</servlet-name>
+    <servlet-class>com.ktds.lizzy.board.web.DoWriteActionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoWriteActionServlet</servlet-name>
+    <url-pattern>/doWrite</url-pattern>
+  </servlet-mapping>
 </web-app>
