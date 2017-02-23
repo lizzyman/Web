@@ -39,4 +39,44 @@
     <servlet-name>DoWriteActionServlet</servlet-name>
     <url-pattern>/doWrite</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewDetailServlet</display-name>
+    <servlet-name>ViewDetailServlet</servlet-name>
+    <servlet-class>com.ktds.lizzy.board.web.ViewDetailServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewDetailServlet</servlet-name>
+    <url-pattern>/detail</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteServlet</display-name>
+    <servlet-name>DeleteServlet</servlet-name>
+    <servlet-class>com.ktds.lizzy.board.web.DeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteServlet</servlet-name>
+    <url-pattern>/delete</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewModifyServlet</display-name>
+    <servlet-name>ViewModifyServlet</servlet-name>
+    <servlet-class>com.ktds.lizzy.board.web.ViewModifyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewModifyServlet</servlet-name>
+    <url-pattern>/modify</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoModifyServlet</display-name>
+    <servlet-name>DoModifyServlet</servlet-name>
+    <servlet-class>com.ktds.lizzy.board.web.DoModifyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoModifyServlet</servlet-name>
+    <url-pattern>/doModify</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -16,5 +16,7 @@ public interface BoardBiz {
     public BoardVO getOneArticle(int boardId);
 
     public boolean deleteArticle(int boardId);
+    
+    public boolean modifyArticle(BoardVO boardVO);
 
 }

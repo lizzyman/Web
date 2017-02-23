@@ -20,7 +20,9 @@
 		<c:forEach items="${articles}" var="article">
 			<tr>
 				<td>${article.boardId}</td>
-				<td>${article.subject}</td>
+				<td>
+					<a href="/boardTest/detail?boardId=${article.boardId}">${article.subject}</a>
+				</td>
 				<td>${article.writer}</td>
 				<td>${article.writeDate}</td>
 				<td>${article.likeCount}</td>

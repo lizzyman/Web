@@ -55,7 +55,8 @@ public class BoardDaoImpl extends JDBCDaoSupport implements BoardDao {
         });
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public List<BoardVO> selectAllArticles()  {
         return selectList(new QueryHandler() {
             @Override
@@ -122,9 +123,11 @@ public class BoardDaoImpl extends JDBCDaoSupport implements BoardDao {
             @Override
             public String prepareQuery() {
                 StringBuffer query = new StringBuffer();
+                
                 query.append("   DELETE ");
                 query.append("   FROM   BOARD ");
                 query.append("   WHERE  BOARD_ID = ? ");
+               
                 return query.toString();
             }
 
@@ -139,5 +142,38 @@ public class BoardDaoImpl extends JDBCDaoSupport implements BoardDao {
             }
         });
     }
+
+	@Override
+	public int updateArticle(BoardVO boardVO) {
+		return update(new QueryHandler() {
+			
+			@Override
+			public String prepareQuery() {
+				StringBuffer query = new StringBuffer();
+				
+				query.append(" UPDATE  BOARD "         );
+				query.append(" SET     WRTR = ? "      );
+				query.append("         ,SUBJECT = ? "  );
+				query.append("         ,CONT = ? "     );
+				query.append(" WHERE   BOARD_ID = ? "  );
+
+				return query.toString();
+			}
+			
+			@Override
+			public void mappingParameters(PreparedStatement stmt) throws SQLException {
+				stmt.setString(1, boardVO.getWriter());
+				stmt.setString(2, boardVO.getSubject());
+				stmt.setString(3, boardVO.getContents());
+				stmt.setInt(4, boardVO.getBoardId());
+			}
+			
+			@Override
+			public Object getData(ResultSet rs) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+		});
+	}
 
 }

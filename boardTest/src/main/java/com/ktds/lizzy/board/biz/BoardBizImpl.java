@@ -37,4 +37,9 @@ public class BoardBizImpl implements BoardBiz {
         return boardDao.removeArticle(boardId) > 0;
     }
 
+	@Override
+	public boolean modifyArticle(BoardVO boardVO) {
+		return boardDao.updateArticle(boardVO) > 0;
+	}
+
 }

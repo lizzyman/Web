@@ -16,5 +16,7 @@ public interface BoardDao {
     public BoardVO selectOneArticle(int boardId);
 
     public int removeArticle(int boardId);
+    
+    public int updateArticle(BoardVO boardVO);
 
 }

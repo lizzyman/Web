@@ -1,8 +1,6 @@
 package com.ktds.lizzy.board.web;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,63 +9,47 @@ import javax.servlet.http.HttpServletResponse;
 import com.ktds.lizzy.board.biz.BoardBiz;
 import com.ktds.lizzy.board.biz.BoardBizImpl;
 import com.ktds.lizzy.board.vo.BoardVO;
-import com.ktds.lizzy.dao.support.annotation.BindData;
 
-import oracle.net.aso.d;
-
-public class DoWriteActionServlet extends HttpServlet {
+public class DoModifyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private BoardBiz boardBiz;
-	
-    public DoWriteActionServlet() {
-       boardBiz = new BoardBizImpl();
+
+    public DoModifyServlet() {
+    	boardBiz = new BoardBizImpl();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		request.setCharacterEncoding("UTF-8");
 		
+		int boardId = 0;
+		try {
+			boardId = Integer.parseInt(request.getParameter("boardId"));
+		}
+		catch (NumberFormatException e) {
+			throw new RuntimeException("잘못된 접근입니다.");
+		}
 		String writer = request.getParameter("writer");
 		String subject = request.getParameter("subject");
 		String contents = request.getParameter("contents");
 		
-		String ip = request.getRemoteAddr();
-		writer = writer + "(" + ip + ")";
-		
-		System.out.println(writer);
-		System.out.println(subject);
-		System.out.println(contents);
-		
-		contents = contents.replaceAll("\n", "<br/>");
-		contents = contents.replaceAll("\r", "");
-		
-		
 		BoardVO boardVO = new BoardVO();
+		
+		boardVO.setBoardId(boardId);
 		boardVO.setWriter(writer);
 		boardVO.setSubject(subject);
 		boardVO.setContents(contents);
 		
-		if (boardBiz.writeArticle(boardVO)) {
-			//board 페이지로 이동
-			// Redirect 방식
+		if (boardBiz.modifyArticle(boardVO)) {
 			response.sendRedirect("/boardTest/board");
 		}
 		else {
-			//write 페이지로 이동
-			// Redirect 방식
-			response.sendRedirect("/boardTest/write");
+			response.sendRedirect("/boardTest/modify");
 		}
-		
-		//forward 방식		
-		//RequestDispatcher dispatcher = request.getRequestDispatcher("/board");
-		//dispatcher.forward(request, response);
-		
 	}
 
 }
