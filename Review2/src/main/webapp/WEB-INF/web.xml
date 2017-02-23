@@ -19,4 +19,14 @@
     <servlet-name>ReviewServlet2</servlet-name>
     <url-pattern>/review2</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>asdfasdfServlet</display-name>
+    <servlet-name>asdfasdfServlet</servlet-name>
+    <servlet-class>com.ktds.lizzy.web.asdfasdfServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>asdfasdfServlet</servlet-name>
+    <url-pattern>/asdfasdfServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

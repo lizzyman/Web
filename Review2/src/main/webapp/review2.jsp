@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- 
+	1. c:if
+	2. c:foreach
+	3. c:choose ~ c:when ~c:otherwise
+	4. c:set
+	5. c:out
+	6. c:import
+ -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +30,13 @@
 	<h1>Alias</h1>
 	<h2>${introduce.alias}</h2>
 	${introduceList[0].alias}<br/>
+	
+	<c:forEach items="${introduceList}" var="intro">
+		${intro.name} <br/>
+		${intro.age} <br/>
+		${intro.alias} <br/>
+	</c:forEach>
+
 
 </body>
 </html>

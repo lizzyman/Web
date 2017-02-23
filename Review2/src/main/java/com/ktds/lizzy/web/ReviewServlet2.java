@@ -23,7 +23,6 @@ public class ReviewServlet2 extends HttpServlet {
      */
     public ReviewServlet2() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
