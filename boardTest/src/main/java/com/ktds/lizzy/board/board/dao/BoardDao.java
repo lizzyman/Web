@@ -1,8 +1,8 @@
-package com.ktds.lizzy.board.dao;
-
-import com.ktds.lizzy.board.vo.BoardVO;
+package com.ktds.lizzy.board.board.dao;
 
 import java.util.List;
+
+import com.ktds.lizzy.board.board.vo.BoardVO;
 
 /**
  * Created by Admin on 2017-02-17.

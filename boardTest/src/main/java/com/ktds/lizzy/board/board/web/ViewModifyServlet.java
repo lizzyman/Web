@@ -1,4 +1,4 @@
-package com.ktds.lizzy.board.web;
+package com.ktds.lizzy.board.board.web;
 
 import java.io.IOException;
 
@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ktds.lizzy.board.biz.BoardBiz;
-import com.ktds.lizzy.board.biz.BoardBizImpl;
-import com.ktds.lizzy.board.vo.BoardVO;
+import com.ktds.lizzy.board.board.biz.BoardBiz;
+import com.ktds.lizzy.board.board.biz.BoardBizImpl;
+import com.ktds.lizzy.board.board.vo.BoardVO;
 
 public class ViewModifyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -26,7 +26,7 @@ public class ViewModifyServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setCharacterEncoding("UTF-8");
+		//response.setCharacterEncoding("UTF-8");
 		
 		String boardIdString = request.getParameter("boardId");
 		int boardId = 0;
@@ -45,7 +45,7 @@ public class ViewModifyServlet extends HttpServlet {
 		
 		request.setAttribute("board", boardVO);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/modify.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/view/board/modify.jsp");
 		dispatcher.forward(request, response);
 	}
 

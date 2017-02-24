@@ -1,4 +1,4 @@
-package com.ktds.lizzy.board.web;
+package com.ktds.lizzy.board.board.web;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ktds.lizzy.board.biz.BoardBiz;
-import com.ktds.lizzy.board.biz.BoardBizImpl;
-import com.ktds.lizzy.board.vo.BoardVO;
-import com.sun.swing.internal.plaf.basic.resources.basic;
+import com.ktds.lizzy.board.board.biz.BoardBiz;
+import com.ktds.lizzy.board.board.biz.BoardBizImpl;
+import com.ktds.lizzy.board.board.vo.BoardVO;
+
 
 /**
  * Servlet implementation class BoardServlet
@@ -37,7 +37,7 @@ public class BoardServlet extends HttpServlet {
 		List<BoardVO> articleList = boardBiz.getAllArticles();
 		request.setAttribute("articles", articleList);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/board.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/view/board/board.jsp");
 		dispatcher.forward(request, response);
 	}
 

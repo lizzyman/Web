@@ -8,6 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	<input type="button" value="Sign Up" onclick="self.location='/boardTest/user/signUp'">
+	<input type="button" value="Login" onclick="self.location='/boardTest/user/signIn'">
+	
 	<table>
 		<tr>
 			<th>번호</th>

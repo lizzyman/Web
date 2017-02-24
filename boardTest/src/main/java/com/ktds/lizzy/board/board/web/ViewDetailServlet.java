@@ -1,4 +1,4 @@
-package com.ktds.lizzy.board.web;
+package com.ktds.lizzy.board.board.web;
 
 import java.io.IOException;
 
@@ -8,8 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ktds.lizzy.board.biz.*;
-import com.ktds.lizzy.board.vo.BoardVO;
+import com.ktds.lizzy.board.board.biz.BoardBiz;
+import com.ktds.lizzy.board.board.biz.BoardBizImpl;
+import com.ktds.lizzy.board.board.vo.BoardVO;
 
 public class ViewDetailServlet extends HttpServlet {
 	
@@ -27,7 +28,7 @@ public class ViewDetailServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setCharacterEncoding("UTF-8");
+		//response.setCharacterEncoding("UTF-8");
 		
 		String boardIdString = request.getParameter("boardId");
 		// getParameter()는 문자로 밖에 받을 수 없다.
@@ -43,7 +44,7 @@ public class ViewDetailServlet extends HttpServlet {
 		
 		request.setAttribute("board", board);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/detail.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/view/board/detail.jsp");
 		dispatcher.forward(request, response);		
 	}
 

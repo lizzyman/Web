@@ -1,4 +1,4 @@
-package com.ktds.lizzy.board.web;
+package com.ktds.lizzy.board.board.web;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -6,9 +6,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ktds.lizzy.board.biz.BoardBiz;
-import com.ktds.lizzy.board.biz.BoardBizImpl;
-import com.ktds.lizzy.board.vo.BoardVO;
+import com.ktds.lizzy.board.board.biz.BoardBiz;
+import com.ktds.lizzy.board.board.biz.BoardBizImpl;
+import com.ktds.lizzy.board.board.vo.BoardVO;
 
 public class DoModifyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -24,7 +24,7 @@ public class DoModifyServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
+		//request.setCharacterEncoding("UTF-8");
 		
 		int boardId = 0;
 		try {

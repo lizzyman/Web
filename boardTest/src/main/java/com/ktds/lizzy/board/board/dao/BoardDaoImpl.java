@@ -1,6 +1,6 @@
-package com.ktds.lizzy.board.dao;
+package com.ktds.lizzy.board.board.dao;
 
-import com.ktds.lizzy.board.vo.BoardVO;
+import com.ktds.lizzy.board.board.vo.BoardVO;
 import com.ktds.lizzy.dao.support.JDBCDaoSupport;
 import com.ktds.lizzy.dao.support.QueryHandler;
 import com.ktds.lizzy.dao.support.annotation.BindData;

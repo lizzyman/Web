@@ -13,7 +13,7 @@
     <description></description>
     <display-name>BoardServlet</display-name>
     <servlet-name>BoardServlet</servlet-name>
-    <servlet-class>com.ktds.lizzy.board.web.BoardServlet</servlet-class>
+    <servlet-class>com.ktds.lizzy.board.board.web.BoardServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>BoardServlet</servlet-name>
@@ -23,7 +23,7 @@
     <description></description>
     <display-name>WriteServlet</display-name>
     <servlet-name>WriteServlet</servlet-name>
-    <servlet-class>com.ktds.lizzy.board.web.WriteServlet</servlet-class>
+    <servlet-class>com.ktds.lizzy.board.board.web.WriteServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>WriteServlet</servlet-name>
@@ -33,7 +33,7 @@
     <description></description>
     <display-name>DoWriteActionServlet</display-name>
     <servlet-name>DoWriteActionServlet</servlet-name>
-    <servlet-class>com.ktds.lizzy.board.web.DoWriteActionServlet</servlet-class>
+    <servlet-class>com.ktds.lizzy.board.board.web.DoWriteActionServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>DoWriteActionServlet</servlet-name>
@@ -43,7 +43,7 @@
     <description></description>
     <display-name>ViewDetailServlet</display-name>
     <servlet-name>ViewDetailServlet</servlet-name>
-    <servlet-class>com.ktds.lizzy.board.web.ViewDetailServlet</servlet-class>
+    <servlet-class>com.ktds.lizzy.board.board.web.ViewDetailServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ViewDetailServlet</servlet-name>
@@ -53,7 +53,7 @@
     <description></description>
     <display-name>DeleteServlet</display-name>
     <servlet-name>DeleteServlet</servlet-name>
-    <servlet-class>com.ktds.lizzy.board.web.DeleteServlet</servlet-class>
+    <servlet-class>com.ktds.lizzy.board.board.web.DeleteServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>DeleteServlet</servlet-name>
@@ -63,7 +63,7 @@
     <description></description>
     <display-name>ViewModifyServlet</display-name>
     <servlet-name>ViewModifyServlet</servlet-name>
-    <servlet-class>com.ktds.lizzy.board.web.ViewModifyServlet</servlet-class>
+    <servlet-class>com.ktds.lizzy.board.board.web.ViewModifyServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ViewModifyServlet</servlet-name>
@@ -73,10 +73,102 @@
     <description></description>
     <display-name>DoModifyServlet</display-name>
     <servlet-name>DoModifyServlet</servlet-name>
-    <servlet-class>com.ktds.lizzy.board.web.DoModifyServlet</servlet-class>
+    <servlet-class>com.ktds.lizzy.board.board.web.DoModifyServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>DoModifyServlet</servlet-name>
     <url-pattern>/doModify</url-pattern>
   </servlet-mapping>
+  <filter>
+    <display-name>CharacterEncodingFilter</display-name>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <filter-class>com.ktds.lizzy.common.web.CharacterEncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewSignUpServlet</display-name>
+    <servlet-name>ViewSignUpServlet</servlet-name>
+    <servlet-class>com.ktds.lizzy.board.user.web.ViewSignUpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewSignUpServlet</servlet-name>
+    <url-pattern>/user/signUp</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoSignUpActionServlet</display-name>
+    <servlet-name>DoSignUpActionServlet</servlet-name>
+    <servlet-class>com.ktds.lizzy.board.user.web.DoSignUpActionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoSignUpActionServlet</servlet-name>
+    <url-pattern>/user/doSignUp</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewSignInServlet</display-name>
+    <servlet-name>ViewSignInServlet</servlet-name>
+    <servlet-class>com.ktds.lizzy.board.user.web.ViewSignInServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewSignInServlet</servlet-name>
+    <url-pattern>/user/signIn</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DoSignInActionServlet</display-name>
+    <servlet-name>DoSignInActionServlet</servlet-name>
+    <servlet-class>com.ktds.lizzy.board.user.web.DoSignInActionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DoSignInActionServlet</servlet-name>
+    <url-pattern>/user/doSignIn</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>IndexServlet</display-name>
+    <servlet-name>IndexServlet</servlet-name>
+    <servlet-class>com.ktds.lizzy.board.board.IndexServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IndexServlet</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <display-name>SignInFilter</display-name>
+    <filter-name>SignInFilter</filter-name>
+    <filter-class>com.ktds.lizzy.common.web.SignInFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>SignInFilter</filter-name>
+    <url-pattern>/board</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>SignInFilter</filter-name>
+    <url-pattern>/write</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>SignInFilter</filter-name>
+    <url-pattern>/detail</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>SignInFilter</filter-name>
+    <url-pattern>/modify</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>SignInFilter</filter-name>
+    <url-pattern>/delete</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>SignInFilter</filter-name>
+    <url-pattern>/doWrite</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>SignInFilter</filter-name>
+    <url-pattern>/doModify</url-pattern>
+  </filter-mapping>
 </web-app>

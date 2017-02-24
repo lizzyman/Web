@@ -1,4 +1,4 @@
-package com.ktds.lizzy.board.vo;
+package com.ktds.lizzy.board.board.vo;
 
 import com.ktds.lizzy.dao.support.annotation.Types;
 
