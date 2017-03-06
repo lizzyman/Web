@@ -11,42 +11,46 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ktds.lizzy.board.board.biz.BoardBiz;
 import com.ktds.lizzy.board.board.biz.BoardBizImpl;
+import com.ktds.lizzy.board.board.vo.BoardSearchVO;
 import com.ktds.lizzy.board.board.vo.BoardVO;
+import com.ktds.lizzy.common.web.pager.ClassicPageExplorer;
+import com.ktds.lizzy.common.web.pager.PageExplorer;
+import com.ktds.lizzy.common.web.pager.Pager;
+import com.ktds.lizzy.common.web.pager.PagerFactory;
 
-
-/**
- * Servlet implementation class BoardServlet
- */
 public class BoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
-	private BoardBiz boardBiz;
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public BoardServlet() {
-        boardBiz = new BoardBizImpl();
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		List<BoardVO> articleList = boardBiz.getAllArticles();
-		request.setAttribute("articles", articleList);
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/view/board/board.jsp");
-		dispatcher.forward(request, response);
+	private BoardBiz boardBiz;
+
+	public BoardServlet() {
+		boardBiz = new BoardBizImpl();
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		String pageNo = request.getParameter("pageNo");
+		Pager pager = PagerFactory.getPager(Pager.ORACLE);
+		pager.setPageNumber(pageNo);
+		
+		BoardSearchVO searchVO = new BoardSearchVO();
+		searchVO.setPager(pager);
+		List<BoardVO> articleList = boardBiz.getAllArticles(searchVO);
+		
+		PageExplorer pageExplorer = new ClassicPageExplorer(pager); // paging list를 만들어주는 것
+		String pages = pageExplorer.getPagingList("pageNo", "[@]", "PREV", "NEXT", "searchForm");
+		
+		request.setAttribute("articles", articleList);
+		request.setAttribute("count", pager.getTotalArticleCount());
+		request.setAttribute("pager", pages);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/view/board/board.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }

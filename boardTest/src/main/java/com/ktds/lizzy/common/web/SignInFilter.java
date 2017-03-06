@@ -28,6 +28,7 @@ public class SignInFilter implements Filter {
 		}
 		else {
 			resp.sendRedirect("/boardTest/user/signIn");
+			return; // void일 때 return의 의미 : "종료시켜라" 
 		}
 	}
 

@@ -13,13 +13,34 @@ public class BindData {
 
 	private static List<String> columnNames;
 	private static List<String> typesFieldNames;
+	private static List<Class> primitive;
+	
+	static {
+		primitive = new ArrayList<Class>();
+		primitive.add(byte.class);
+		primitive.add(short.class);
+		primitive.add(int.class);
+		primitive.add(long.class);
+		primitive.add(double.class);
+		primitive.add(float.class);
+		primitive.add(char.class);
+		primitive.add(boolean.class);
+		primitive.add(String.class);
+	}
 
+	public static void startBind(ResultSet rs, Object obj) {
+		Field[] fields = obj.getClass().getDeclaredFields();
+		checkColumns(rs, fields, obj);
+		bindData(rs, obj);
+		
+		typesFieldNames.clear();
+		columnNames.clear();
+	}
+	
 	public static void bindData(ResultSet rs, Object obj) {
 
 		Field[] fields = obj.getClass().getDeclaredFields();
 		Method[] methods = obj.getClass().getDeclaredMethods();
-
-		checkColumns(rs, fields, obj);
 
 		String column = "";
 		String fieldName = "";
@@ -93,19 +114,15 @@ public class BindData {
 	}
 
 	private static void checkColumns(ResultSet rs, Field[] fields, Object obj) {
-		try {
-			if(rs.isFirst()) {
-				columnNames = getColumnNames(rs);
-				typesFieldNames = getTypesFieldNames(fields, rs);
+		if(typesFieldNames == null || typesFieldNames.isEmpty()) {
+			columnNames = getColumnNames(rs);
+			typesFieldNames = getTypesFieldNames(fields, rs);
 
-				for (String columnName : columnNames) {
-					if (!typesFieldNames.contains(columnName)) {
-						throw new RuntimeException("[" + obj.getClass().getSimpleName() + "]?óê?Ñú [" + columnName + "]?óê ?ï¥?ãπ?êò?äî @TypesÎ•? Ï∞æÏ? Î™ªÌñà?äµ?ãà?ã§.");
-					}
+			for (String columnName : columnNames) {
+				if (!typesFieldNames.contains(columnName)) {
+					throw new RuntimeException("[" + obj.getClass().getSimpleName() + "]ø°º≠ [" + columnName + "]ø° «ÿ¥Áµ«¥¬ @Types∏¶ √£¡ˆ ∏¯«ﬂΩ¿¥œ¥Ÿ.");
 				}
 			}
-		} catch (SQLException e) {
-			throw new RuntimeException(e.getMessage(), e);
 		}
 	}
 
@@ -125,6 +142,7 @@ public class BindData {
 		return columnNames;
 	}
 
+	
 	private static List<String> getTypesFieldNames(Field[] fields, ResultSet rs) {
 
 		Annotation[] annotataions = null;
@@ -136,6 +154,16 @@ public class BindData {
 		for (Field field : fields) {
 			annotataions = field.getDeclaredAnnotations();
 			fieldName = field.getName();
+			
+			
+			if ( !primitive.contains(field.getType()) ) {
+				try {
+					typesFieldNames.addAll(getTypesFieldNames(field.getType().newInstance().getClass().getDeclaredFields(), rs));
+				} catch (InstantiationException | IllegalAccessException e) {
+					e.printStackTrace();
+				}
+			}
+			
 			for (Annotation annotation : annotataions) {
 				if (annotation.annotationType() == Types.class) {
 					column = getFieldName(((Types) annotation).alias(), fieldName, rs);

@@ -28,30 +28,20 @@ public class DoWriteActionServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		//request.setCharacterEncoding("UTF-8");
-		
+
 		HttpSession session = request.getSession();
 		UserVO user = (UserVO)session.getAttribute("_USER_"); // Session Container에서 내 정보를 가져온다.
+		BoardVO boardVO = new BoardVO();
 		
-		String writer = user.getUserName();
-		String subject = request.getParameter("subject");
+		boardVO.setWriter(user.getUserId());
+		boardVO.setIp(request.getRemoteAddr());
+		boardVO.setSubject(request.getParameter("subject"));
+		
 		String contents = request.getParameter("contents");
-		
-		String ip = request.getRemoteAddr();
-		writer = writer + "(" + ip + ")";
-		
-		System.out.println(writer);
-		System.out.println(subject);
-		System.out.println(contents);
 		
 		contents = contents.replaceAll("\n", "<br/>");
 		contents = contents.replaceAll("\r", "");
-		
-		
-		BoardVO boardVO = new BoardVO();
-		boardVO.setWriter(writer);
-		boardVO.setSubject(subject);
+
 		boardVO.setContents(contents);
 		
 		if (boardBiz.writeArticle(boardVO)) {
@@ -64,11 +54,7 @@ public class DoWriteActionServlet extends HttpServlet {
 			// Redirect 방식
 			response.sendRedirect("/boardTest/write");
 		}
-		
-		//forward 방식		
-		//RequestDispatcher dispatcher = request.getRequestDispatcher("/board");
-		//dispatcher.forward(request, response);
-		
+
 	}
 
 }
