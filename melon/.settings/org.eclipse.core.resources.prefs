@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//src/main/java/com/melon/common/web/DownloadUtil.java=UTF-8
+encoding//src/main/java/com/melon/common/web/MultipartHttpServletRequest.java=UTF-8
+encoding//src/main/java/com/melon/common/web/pager/ClassicPageExplorer.java=UTF-8
+encoding//src/main/java/com/melon/common/web/pager/ListPageExplorer.java=UTF-8
+encoding//src/main/java/com/melon/common/web/pager/PageExplorer.java=UTF-8
+encoding//src/main/java/com/melon/common/web/pager/Pager.java=UTF-8
+encoding//src/main/java/com/melon/common/web/pager/Test.java=UTF-8
