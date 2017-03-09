@@ -1,4 +1,6 @@
 eclipse.preferences.version=1
+encoding//src/main/java/com/ktds/lizzy/common/web/DownloadUtil.java=UTF-8
+encoding//src/main/java/com/ktds/lizzy/common/web/MultipartHttpServletRequest.java=UTF-8
 encoding//src/main/java/com/ktds/lizzy/common/web/pager/ClassicPageExplorer.java=UTF-8
 encoding//src/main/java/com/ktds/lizzy/common/web/pager/ListPageExplorer.java=UTF-8
 encoding//src/main/java/com/ktds/lizzy/common/web/pager/PageExplorer.java=UTF-8

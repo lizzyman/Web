@@ -171,4 +171,14 @@
     <servlet-name>DoSignOutActionServlet</servlet-name>
     <url-pattern>/user/doSignOut</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewPostServlet</display-name>
+    <servlet-name>ViewPostServlet</servlet-name>
+    <servlet-class>com.ktds.lizzy.board.board.web.ViewPostServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewPostServlet</servlet-name>
+    <url-pattern>/post</url-pattern>
+  </servlet-mapping>
 </web-app>

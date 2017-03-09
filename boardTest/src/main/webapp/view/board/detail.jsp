@@ -13,6 +13,7 @@
 			/ <span>${board.writeDate}</span> / <span>${board.likeCount}</span> <br />
 		</div>
 		<p>${board.contents}</p>
+		<img src="/boardTest/post?boardId=${board.boardId}"/><br/>
 		<hr />
 		<div class="controls">
 			<a href="/boardTest/modify?boardId=${board.boardId}">수정</a> | <a

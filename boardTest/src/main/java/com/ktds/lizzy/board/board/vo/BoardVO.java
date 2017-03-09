@@ -7,22 +7,15 @@ import com.ktds.lizzy.dao.support.annotation.Types;
  * Created by Admin on 2017-02-17.
  */
 public class BoardVO {
-	@Types
 	private int rnum;
-	@Types
 	private int boardId;
-	@Types
 	private String subject;
-	@Types(alias = "CONT")
 	private String contents;
-	@Types(alias = "WRTR")
 	private String writer;
-	@Types(alias = "LIKE_CNT")
 	private int likeCount;
-	@Types(alias = "WRT_DATE")
 	private String writeDate;
-	@Types(alias = "IP")
 	private String ip;
+	private String poster;
 	private UserVO userVO;
 
 	public int getrnum() {
@@ -98,6 +91,14 @@ public class BoardVO {
 
 	public void setIp(String ip) {
 		this.ip = ip;
+	}
+
+	public String getPoster() {
+		return poster;
+	}
+
+	public void setPoster(String poster) {
+		this.poster = poster;
 	}
 
 }
