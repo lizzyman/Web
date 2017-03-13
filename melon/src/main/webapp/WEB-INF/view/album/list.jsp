@@ -30,7 +30,10 @@
 				<td>
 					${index.index}<br/>
 					<div>
-						<img src="/melon/album/post?albumId=${album.albumId}" width="150px" height="150px"/><br/>
+						<a href="/melon/music/list?albumId=${album.albumId}&artistId=${album.artistId}">
+						<!-- 보안 강화 : 사용자가 임의로 url에 접근할 수 없도록 (유추 X) 파라미터를 두개 넣음 -->
+							<img src="/melon/album/post?albumId=${album.albumId}" width="150px" height="150px"/><br/>
+						</a>
 						${album.albumName}<br/>
 						${album.artistVO.member}
 					</div>
